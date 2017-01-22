@@ -4,14 +4,15 @@
 `./prog_sin > prog_sin.raw`
 
 これにヘッダを付けて  
-`sox -r 16000 -c 1 --bits 32 --encoding signed-integer prog_sin.raw prog_sin.wav`  
-(確認中)量子化深度は処理系に依存（`sizeof(int)`が4なら32bit）、エンディアンの考慮も必要  
+`sox -r 16000 -c 1 --bits 8 -e signed prog_sin.raw prog_sin.wav`
+putcharで出力しているのでbit深度は「1」（値の範囲は127〜-128）←limit.hの`CHAR_MAX``CHAR_MIN`から確認  
 
 
 aplayなどで再生すると音が出る。  
-`aplay prog_sin.wav `  
-`再生中 WAVE 'prog_sin.wav' : Signed 32 bit Little Endian, レート 16000 Hz, モノラル`
-
+`aplay -f S8 prog_sin.wav`  
+`警告: フォーマットは U8 に変更されます`
+`再生中 WAVE 'prog_sin.wav' : Unsigned 8 bit, レート 16000 Hz, モノラル`  
+(確認中)符号有りで作っているが、符号無しで認識される。。。符号無しでデータを作るべきなのか？？  
 
 - smp_freq : サンプリングレート(Hz)、毎秒***回サンプリング、1秒間にいくつ区切るか  
   - [DAT]              
