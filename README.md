@@ -10,7 +10,7 @@
 
 [sox(Sound eXchange)コマンドのオプション]
 - -r : sample rate in Hx
-- -c : channel
+- -c : channels
 - --bits : bit-depth
 - -e : encoding
 
