@@ -4,8 +4,8 @@
 `./prog_sin > prog_sin.raw`
 
 これにヘッダを付けて  
-`sox -r 16000 -c 1 --bits 8 -e signed prog_sin.raw prog_sin.wav`
-putcharで出力しているのでbit深度は「1」（値の範囲は127〜-128）←limit.hの`CHAR_MAX``CHAR_MIN`から確認  
+`sox -r 16000 -c 1 --bits 8 -e signed prog_sin.raw prog_sin.wav`  
+※putcharで出力しているのでbit深度は「1」（値の範囲は127〜-128）←limit.hの`CHAR_MAX``CHAR_MIN`から確認  
 
 
 aplayなどで再生すると音が出る。  
